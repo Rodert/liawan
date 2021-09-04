@@ -1,0 +1,46 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE generatorConfiguration-->
+<!--        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"-->
+<!--        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">-->
+<!--<generatorConfiguration>-->
+
+<!--    <context id="DB2Tables" targetRuntime="MyBatis3">-->
+<!--        <commentGenerator>-->
+<!--            <property name="suppressDate" value="true"/>-->
+<!--            <property name="suppressAllComments" value="true"/>-->
+<!--        </commentGenerator>-->
+<!--        &lt;!&ndash;数据库链接地址账号密码&ndash;&gt;-->
+<!--        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://39.96.53.204:3306/liawantest"-->
+<!--                        userId="root" password="Hr1ycflqswslhk.">-->
+<!--        </jdbcConnection>-->
+<!--        <javaTypeResolver>-->
+<!--            <property name="forceBigDecimals" value="false"/>-->
+<!--        </javaTypeResolver>-->
+<!--        &lt;!&ndash;生成Model类存放位置&ndash;&gt;-->
+<!--        <javaModelGenerator targetPackage="com.liawan.model.domain" targetProject="liawan/src/main/java">-->
+<!--            <property name="enableSubPackages" value="true"/>-->
+<!--            <property name="trimStrings" value="true"/>-->
+<!--        </javaModelGenerator>-->
+<!--        &lt;!&ndash;对应的mapper.xml文件  &ndash;&gt;-->
+<!--        <sqlMapGenerator targetPackage="mapper.generator" targetProject="liawan/src/main/resources">-->
+<!--            <property name="enableSubPackages" value="true"/>-->
+<!--        </sqlMapGenerator>-->
+<!--        &lt;!&ndash;生成Dao类存放位置&ndash;&gt;-->
+<!--        &lt;!&ndash; 客户端代码，生成易于使用的针对Model对象和XML配置文件 的代码-->
+<!--                type="ANNOTATEDMAPPER",生成Java Model 和基于注解的Mapper对象-->
+<!--                type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象-->
+<!--                type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口-->
+<!--        &ndash;&gt;-->
+<!--        <javaClientGenerator type="XMLMAPPER" targetPackage="com.liawan.mapper.generator"-->
+<!--                             targetProject="liawan/src/main/java">-->
+<!--            <property name="enableSubPackages" value="true"/>-->
+<!--        </javaClientGenerator>-->
+<!--        &lt;!&ndash;生成对应表及类名&ndash;&gt;-->
+<!--        <table tableName="liawan_user" domainObjectName="User" enableCountByExample="true" enableUpdateByExample="true"-->
+<!--               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">-->
+<!--            &lt;!&ndash; <columnOverride column="article_content" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+<!--                <columnOverride column="article_content_md" javaType="java.lang.String" jdbcType="VARCHAR" /> &ndash;&gt;-->
+<!--            &lt;!&ndash; Mybatis自动生成Xml文件，针对字段类型为text等会默认产生XXXXWithBlobs的方法问题 &ndash;&gt;-->
+<!--        </table>-->
+<!--    </context>-->
+<!--</generatorConfiguration>-->

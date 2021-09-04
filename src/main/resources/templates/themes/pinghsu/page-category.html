@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="themes/pinghsu/header::header(${keywords},null)"></div>
+<body>
+<div class="main-content common-page clearfix">
+    <div class="categorys-item">
+        <div class="common-title">
+            <th:block th:text="${type}"/> : <th:block th:text="${keywords}"/>
+        </div>
+        <th:block th:if="${commons.is_empty(articles)}">
+            <div>
+                <p>抱歉，还没有相关文章.</p>
+            </div>
+        </th:block>
+        <th:block th:unless="${commons.is_empty(articles)}">
+            <div class="post-lists">
+                <div class="post-lists-body">
+                    <th:block th:each="article : ${articles.list}">
+                        <div class="post-list-item">
+                            <div class="post-list-item-container ">
+                                <div class="item-label ">
+                                    <div class="item-title">
+                                        <a th:href="@{'/post/'+${article.articleUrl}}" th:text="${article.articleTitle}"></a>
+                                    </div>
+                                    <div class="item-meta clearfix">
+                                        <div th:class="'item-meta-ico '+${commons.show_icon(article.id)} "
+                                             th:style="'background: url('+@{/img/bg-ico.png}+') no-repeat;background-size: 40px auto;'"></div>
+                                        <div class="item-meta-date">发布于 <th:block th:text="${#dates.format(article.articleNewstime,'yyyy-MM-dd')}"/></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+        </th:block>
+
+    </div>
+</div>
+<div class="lists-navigator clearfix">
+      	  <div th:replace="admin/module/macros::pageNav(${articles},'←','→',${url})"></div>
+    	</div>
+</body>
+<div th:replace="themes/pinghsu/footer::footer"></div>
+</html>

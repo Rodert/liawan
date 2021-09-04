@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="themes/pinghsu/header::header(title='友情链接',keywords=null)"></div>
+<body>
+<article class="main-content page-page">
+    <div id="post-content" class="post-content">
+        <h3>友情链接</h3>
+        <ul class="flinks">
+            <th:block th:each="link : ${links}">
+                <li>🔒 <a th:href="${link.linkUrl}" target="_blank" th:text="${link.linkName}"></a></li>
+            </th:block>
+        </ul>
+        <h3>链接须知</h3>
+        <blockquote>
+            <ul>
+                <li><p>请确定贵站可以稳定运营</p></li>
+                <li><p>原创博客优先，技术类博客优先，设计、视觉类博客优先</p></li>
+                <li><p>经常过来访问和评论，眼熟的</p></li>
+            </ul>
+        </blockquote>
+        <h3>基本信息</h3>
+        <pre><code class="lang-md hljs markdown">
+            网站名称：<span th:text="${options['blog_name']}"></span>
+            网站地址：<span th:text="${options['blog_url']}"></span></code></pre>
+        <p>我的邮箱:<span th:text="${options['email_username']}"></span></p>
+        <p>本案网站开始全面运营，同时欢迎分享 ^_^</p>
+        <p>还有，我会不定时对无法访问的网址进行清理，请保证自己的链接长期有效</p></div>
+</article>
+</body>
+<div th:replace="admin/module/macros :: comm_comment"></div> 
+<div th:replace="themes/pinghsu/footer::footer"></div>
+</html>

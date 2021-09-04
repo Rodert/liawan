@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="themes/pinghsu/header::header(${article.articleTitle},${article.tagsName})"></div>
+<body>
+<article class="main-content page-page" itemscope="" itemtype="http://schema.org/Article">
+    <div class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            <a th:href="@{'/post/'+${article.articleUrl}}" th:text="${article.articleTitle}" data-no-instant=""></a>
+        </h1>
+        <div class="post-data">
+            <time itemprop="datePublished" th:text="'发布于 '+ ${#dates.format(article.articleNewstime,'yyyy/MM/dd HH:mm:ss')}"></time>
+            / <th:block th:utext="${commons.show_categories(article.categorysUrl,article.categorysName)}"/> / <th:block th:text="${article.articleViews == null ? 0 : article.articleViews}+'浏览'"></th:block>
+            	<!-- id 将作为查询条件
+		<span th:id="'/post/'+${article.articleUrl}" class="leancloud-visitors">
+    		<em class="post-meta-item-text">阅读量 </em>
+  		 	 <i class="leancloud-visitors-count"></i>
+		</span> -->
+        </div>
+    </div>
+    <div id="post-content" class="post-content" itemprop="articleBody">
+        <p class="post-tags" th:utext="${commons.show_tags(article.tagsUrl,article.tagsName)}"></p>
+        <th:block th:utext="${article.articleContent}"/>
+        <p class="post-info">
+            本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名,转载请标明出处<br/>最后编辑时间为:
+            <th:block th:text="${#dates.format(article.articleUpdatetime,'yyyy/MM/dd HH:mm:ss')}"/>
+        </p>
+    </div>
+</article>
+ <div th:replace="admin/module/macros :: comment"></div> 
+ <div th:replace="themes/pinghsu/footer :: footer"></div> 
+</body>
+</html>

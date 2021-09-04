@@ -1,0 +1,38 @@
+server:
+  port: 8093
+logging:
+  level:
+    org.springframework: info
+    web: trace
+    data: DEBUG
+    security: DEBUG
+  config: classpath:logback-spring.xml
+spring:
+  mvc:
+    static-path-pattern: /**
+  thymeleaf:
+    servlet:
+      content-type: text/html
+    encoding: UTF-8
+    cache: false
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/liawantest2?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    username: root
+    password:
+    driver-class-name: com.mysql.jdbc.Driver
+  devtools:
+    livereload:
+      port: 35730
+mybatis:
+  typeAliasesPackage: com.liawan.model.domain
+  mapperLocations: classpath:mapper/*/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+pagehelper:
+  helper-dialect: mysql
+  # 处理版本问题，
+  #  dialect: com.github.pagehelper.dialect.helper.MySqlDialect
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
