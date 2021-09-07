@@ -1,0 +1,156 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8" />-->
+<!--    &lt;!&ndash; <meta name="viewport" content="width=device-width, initial-scale=1.0" /> &ndash;&gt;-->
+<!--    <meta name="viewport" content="width=device-width, user-scalable=no" />-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge" />-->
+<!--    <title>JS实现滚动监听以及滑动到顶部</title>-->
+<!--    <script src="https://cdn.bootcss.com/eruda/1.4.3/eruda.min.js"></script>-->
+<!--    <script>-->
+<!--        eruda.init();-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<style>-->
+<!--    body {-->
+<!--        margin: 0;-->
+<!--        background-color: rgba(0, 0, 255, 0.1);-->
+<!--        height: 200vh;-->
+<!--    }-->
+<!--    .uptop {-->
+<!--        position: fixed;-->
+<!--        bottom: -50px;-->
+<!--        right: 10px;-->
+<!--        width: 50px;-->
+<!--        z-index: 99;-->
+<!--        background: rgba(0, 0, 0, 0.2);-->
+<!--        text-align: center;-->
+<!--        -webkit-transition: all 0.5s;-->
+<!--        -moz-transition: all 0.5s;-->
+<!--        -ms-transition: all 0.5s;-->
+<!--        -o-transition: all 0.5s;-->
+<!--        transition: all 0.5s;-->
+<!--    }-->
+<!--    .uptop img {-->
+<!--        width: 80%;-->
+<!--        cursor: pointer;-->
+<!--    }-->
+<!--</style>-->
+<!--<div class="uptop" id="uptop">-->
+<!--    &lt;!&ndash; 这里用了一个向上的箭头图片，用于表明返回顶部 &ndash;&gt;-->
+<!--    <img src="/static/img/liawan_transparent.png" id="to-top" />-->
+<!--</div>-->
+<!--<script>-->
+<!--    // 使用touchstart和touched封装了一个移动端的tap事件-->
+<!--    var idcast = {-->
+<!--        // 传入dom元素-->
+<!--        tap: function(dom, callback) {-->
+<!--            //判断是否传入了dom元素,或者dom元素是否是一个对象-->
+<!--            if (!dom || typeof dom != "object") {-->
+<!--                return;-->
+<!--            }-->
+<!--            var startX, startY, time, moveX, moveY, distanceX, distanceY;-->
+<!--            dom.addEventListener("touchstart", function(e) {-->
+<!--                if (e.targetTouches.length > 1) {-->
+<!--                    return;-->
+<!--                }-->
+<!--                startX = e.targetTouches[0].clientX;-->
+<!--                startY = e.targetTouches[0].clientY;-->
+<!--                time = Date.now();-->
+<!--            });-->
+<!--            dom.addEventListener("touchend", function(e) {-->
+<!--                if (e.changedTouches.length > 1) {-->
+<!--                    //说明不止一个手指-->
+<!--                    return;-->
+<!--                }-->
+<!--                //判断时间差异-->
+<!--                if (Date.now() - time > 150) {-->
+<!--                    console.log("长按操作");-->
+<!--                    return;-->
+<!--                }-->
+<!--                //获取松开手指的时候的坐标与触摸开始时的坐标差异-->
+<!--                moveX = e.changedTouches[0].clientX;-->
+<!--                moveY = e.changedTouches[0].clientY;-->
+<!--                distanceX = moveX - startX;-->
+<!--                distanceY = moveY - startY;-->
+<!--                //判断坐标差异-->
+<!--                if (Math.abs(distanceX) < 6 && Math.abs(distanceY) < 6) {-->
+<!--                    //说明是点击而非滑动-->
+<!--                    //执行tap事件相应之后的处理操作-->
+<!--                    //若函数不为空才调用-->
+<!--                    callback && callback(e);-->
+<!--                    console.log("移动端点击单击事件&#45;&#45;tap事件");-->
+<!--                } else {-->
+<!--                    console.log("滑动操作");-->
+<!--                }-->
+<!--            });-->
+<!--        }-->
+<!--    };-->
+
+<!--    window.onscroll = function() {-->
+<!--        var t = document.documentElement.scrollTop || document.body.scrollTop; //获取距离页面顶部的距离-->
+<!--        var uptop = document.getElementById("uptop"); //获取div元素-->
+<!--        if (t >= 300) {-->
+<!--            //当距离顶部超过300px时-->
+<!--            uptop.style.bottom = 30 + "px"; //使div距离底部30px，也就是向上出现-->
+<!--        } else {-->
+<!--            //如果距离顶部小于300px-->
+<!--            uptop.style.bottom = -50 + "px"; //使div向下隐藏-->
+<!--        }-->
+<!--    };-->
+
+<!--    var top = document.getElementById("to-top"); //获取图片元素-->
+<!--    var timer = null;-->
+
+<!--    // 方式1(推介): 解决了移动端click延迟300ms触发问题-->
+<!--    idcast.tap(top, function(e) {-->
+<!--        //点击图片时触发点击事件-->
+<!--        timer = setInterval(function() {-->
+<!--            // 设置一个计时器-->
+<!--            var ct =-->
+<!--                document.documentElement.scrollTop || document.body.scrollTop; //获取距离顶部的距离-->
+<!--            ct -= 10;-->
+<!--            if (ct > 0) {-->
+<!--                //如果与顶部的距离大于零-->
+<!--                window.scrollTo(0, ct); //向上移动10px-->
+<!--            } else {-->
+<!--                //如果距离小于等于零-->
+<!--                window.scrollTo(0, 0); //移动到顶部-->
+<!--                clearInterval(timer); //清除计时器-->
+<!--            }-->
+<!--        }, 10); //隔10ms执行一次前面的function，展现一种平滑滑动效果-->
+<!--    });-->
+
+<!--    // 方式2: IOS微信端打开时 无法触发click事件-->
+<!--    // top.onclick = function() {-->
+<!--    //   //点击图片时触发点击事件-->
+<!--    //   timer = setInterval(function() {-->
+<!--    //     // 设置一个计时器-->
+<!--    //     var ct =-->
+<!--    //       document.documentElement.scrollTop || document.body.scrollTop; //获取距离顶部的距离-->
+<!--    //     console.log(ct);-->
+<!--    //     ct -= 10;-->
+<!--    //     if (ct > 0) {-->
+<!--    //       //如果与顶部的距离大于零-->
+<!--    //       window.scrollTo(0, ct); //向上移动10px-->
+<!--    //     } else {-->
+<!--    //       //如果距离小于等于零-->
+<!--    //       window.scrollTo(0, 0); //移动到顶部-->
+<!--    //       clearInterval(timer); //清除计时器-->
+<!--    //     }-->
+<!--    //   }, 10); //隔10ms执行一次前面的function，展现一种平滑滑动效果-->
+<!--    // };-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<body style="height:2000px;">
+<button id="test" style="position:fixed;right:0;bottom:0">回到顶部</button>
+<script>
+    test.onclick = function(){
+        scrollTo(0,0);
+    }
+</script>
+</body>
