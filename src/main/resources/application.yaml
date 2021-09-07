@@ -17,9 +17,9 @@ spring:
     cache: false
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://127.0.0.1:3306/ylsn?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    url: jdbc:mysql://39.96.53.204:3306/ylsn?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
     username: root
-    password: 12qaq
+    password: Hr1ycflqswslhk.
     driver-class-name: com.mysql.jdbc.Driver
 #  devtools:
 #    livereload:
