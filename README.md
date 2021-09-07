@@ -1,5 +1,7 @@
 ![logo](img/logo.png)
 
+[toc]
+
 ## 平台介绍
 
 一直想做一个博客加商城的系统，但是又苦于对前端理解不透彻，无法灵活运用。在github找了很久也没找到合适的。或者功能简陋没法在生产环境中用、或功能过多不适合前端二把刀的服务端开发人员上手。
@@ -20,7 +22,25 @@
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/f86587527c40452c98466db2fbe39e51.png)
 
+## 快速安装介绍
 
+### 环境
+
+jdk8、idea2019.2、mysql5.7、springboot2.5.4
+
+### 安装运行
+
+1. 导入sql文件，appPath/db/liawan*.sql
+
+2. 导入 IDEA
+
+3. 运行 com.liawan.LiawanApplication
 
 
     
+## 写在最后
+
+最新版本代码不定时上传更新，联系
+
+![联系站长](https://img-blog.csdnimg.cn/20210218233243678.jpg#pic_center)
+
