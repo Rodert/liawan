@@ -1,5 +1,5 @@
 server:
-  port: 8093
+  port: 28090
 logging:
   level:
     org.springframework: info
@@ -17,13 +17,13 @@ spring:
     cache: false
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://127.0.0.1:3306/liawantest2?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    url: jdbc:mysql://127.0.0.1:3306/ylsn?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
     username: root
-    password:
+    password: 12qaq
     driver-class-name: com.mysql.jdbc.Driver
-  devtools:
-    livereload:
-      port: 35730
+#  devtools:
+#    livereload:
+#      port: 35730
 mybatis:
   typeAliasesPackage: com.liawan.model.domain
   mapperLocations: classpath:mapper/*/*.xml

@@ -112,6 +112,7 @@
         FROM liawan_article
         WHERE article_url = #{articleUrl}
     </select>
+
     <select id="findByArticleUrl" parameterType="String" resultType="com.liawan.model.domain.ArticleCustom">
         SELECT ma.*,
                GROUP_CONCAT(distinct mc.category_name) AS categorysName,
