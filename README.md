@@ -2,6 +2,15 @@
 
 [toc]
 
+## 推荐项目版本
+
+免费开源，欢迎start
+
+| project | github | gitee | mark | docs |
+| :-----| ----: | :----: | :----: | :----: |
+| liawan-vue | https://github.com/Rodert/liawan-vue | https://gitee.com/rodert/liawan-vue | SpringBoot+VUE版 | 免费提供完整搭建方案、及视频教程 |
+| liawan-cloud | 待完成 | 待完成 | SpringCloud+VUE版 |  待完成  |
+
 ## 平台介绍
 
 一直想做一个博客加商城的系统，但是又苦于对前端理解不透彻，无法灵活运用。在github找了很久也没找到合适的。或者功能简陋没法在生产环境中用、或功能过多不适合前端二把刀的服务端开发人员上手。
